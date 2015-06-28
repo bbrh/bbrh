@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BCNNM</title>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <style type="text/css">
+
+    .menu {
+      background-color: rgba(255,255,255,0.9);
+      border-bottom: 1px solid rgba(50,50,50,0.2);
+    }
+
+    .section {
+      padding-top: 6em;
+      padding-bottom: 10em;
+      padding-right: 15px;
+      padding-left: 15px;
+      height: 100vh;
+    }
+
+    .contacts {
+      background-color: rgb(4,63,90);
+      color: rgb(200,200,200);
+    }
+
+    .avatar {
+      float: left;
+      margin-right: 2em;
+      margin-left: -1em;
+
+    }
+
+    .person {
+      display: block;
+      margin-bottom: 4em;
+      clear: both;
+    }
+
+    .page-content {
+      width: 66vw;
+      min-width: 40em;
+/*      padding-right: 0;
+      padding-left: 0;
+      margin-right: 0;
+      margin-left: 0;
+*/    }
+  </style>
+  <script type="text/javascript">
+
+  </script>
+</head>
+<body>
+  <!--Navbar HTML-->
+    <nav id="menu" class="navbar navbar-fixed-top menu">
+      <div class="container">
+        <div class="navbar-brand">BCNNM</div>
+        <ul class="nav navbar-nav">
+          <li><a href="#project">Project</a></li>
+          <li><a href="#directions">Directions</a></li>
+          <li><a href="#team">Team</a></li>                    
+          <li><a href="#contacts">Contacts</a></li>
+        </ul>
+      </div>  
+    </nav>
+    <!--Content section-->
+  <div class="container page-content">
+
+    <div data-spy="scroll" data-target="#menu" data-offset="0">
+      <div id="project" class="section project row">
+        <div class="col-md-8">
+          <p class="lead">BCNNM stands for Biological Cellular Neural Network Modelling and its goal is to provide a simulation of a brain development in living organisms. We are starting from single cell and a set of biological rules that describing behaviour of the cell-cell interactions. During the simulation, network evolves (new neural cells are formed, some of them are dying, others are forming synaptic connections). After the growth phase there is a learning process somewhat similar to supervised learning in artificial neural networks (ANN).</p>
+        </div>
+        <div class="col-md-4">
+          <h5>Twitter translation goes here</h5>
+        </div>
+      </div>
+      <div id="directions" class="section directions">
+        <h2>Directions</h2>
+        <p>At the moment, we have working evolving model that produces a neural network. It’s efficiency still could be better, but this is more a question of biological description and identifying valuable growing factors. As a next milestone we are planning to get a precision in classification tasks comparable to ANN. Another theme in the project is to growing neural network similar to one of the biological model organisms (popular nematode c.elegans). I am not really a biology guy, and if you have any questions you are welcome to contact Dmitry Bozhko (dmitry.bozhko@jetbrains.com), who is a head of our project.</p>
+      </div>
+      <div id="team" class="section team">
+        <h2>Team</h2>
+
+        <div class="person">
+          <img height="80" width="80" class="avatar img-circle" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1FtEh9PGVpQxzWZdI3OrEtNc51izMS0XEIMSumqMxcsa1I36t"/>
+
+          <h3 class="h4">Dmitry Bozhko</h3>
+          <p>
+            Model, management and software
+          </p>
+        </div>
+        <div class="person">
+          <img height="80" width="80" class="avatar img-circle" src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQkwglNJBRqoaFODSHbGusAAfQZ25A_ceb5ZWPjs6S20mZuhX_3-Q"/>
+
+          <h3 class="h4">Georgy Galumov</h3>
+          <p>
+            Software and astrophysics
+          </p>
+        </div>
+        <div class="person">
+          <img height="80" width="80" class="avatar img-circle" src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcT9nu7mokajHvhBcIDVn7YuFG7JdlhyVNZjBUSBvPOTz-vl-B3pBw"/>
+
+          <h3 class="h4">Victoria Stelmakh</h3>
+          <p>
+            Biology
+          </p>
+        </div>
+        <div class="person">
+          <img height="80" width="80" class="avatar img-circle" src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSAHdR9m5Ah_Pk4wYixvGr6Ox0NVpSc7a8AWZVZ4hELaZffVGh1JA"/>
+
+          <h3 class="h4">Alex Polovian</h3>
+          <p>
+            Mathematics and programming
+          </p>
+        </div>
+
+<!--         <ul class="list-unstyled">
+          <li>
+            <h3>Dmitry Bozhko</h3>
+          </li>
+          <li>
+            <h3>Georgy Galumov</h3>
+          </li>
+          <li>
+            <h3>Victoria Stelmakh</h3>
+          </li>
+          <li>
+            <h3>Alex Polovian</h3>
+            <p></p>
+          </li>
+        </ul>
+ -->      </div>
+      <div id="contacts" class="section contacts">
+        <h2>Contacts</h2>
+        <div class="container">
+          <ul class="list-unstyled">
+            <li>AAAA</li>
+            <li>AAAA</li>
+            <li>AAAA</li>
+            <li>AAAA</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>  
+</body>
+</html>
