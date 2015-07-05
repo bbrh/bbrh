@@ -19,8 +19,13 @@
       <div class="container">
         <div class="navbar-brand">BCNNM</div>
         <ul class="nav navbar-nav">
-          <li><a href="#project">Project</a></li>
-          <li><a href="#directions">Directions</a></li>
+          <li><a href="#intro">Intro</a></li>
+          <li><a href="#goals">Goals</a></li>
+          <li><a href="#description">Description</a></li>
+          <li><a href="#model">Model</a></li>
+          <li><a href="#core">Core</a></li>
+          <li><a href="#analysis">Analysis</a></li>
+          <li><a href="#further-work">Further work</a></li>
           <li><a href="#team">Team</a></li>                    
           <li><a href="#contacts">Contacts</a></li>
         </ul>
@@ -30,72 +35,112 @@
   <div class="container page-content">
 
     <div data-spy="scroll" data-target="#menu" data-offset="0">
-      <div id="project" class="section project row">
+      <div id="intro" class="section row">
         <div class="col-md-8">
-          <p class="lead">BCNNM stands for Biological Cellular Neural Network Modelling and its goal is to provide a simulation of a brain development in living organisms. We are starting from single cell and a set of biological rules that describing behaviour of the cell-cell interactions. During the simulation, network evolves (new neural cells are formed, some of them are dying, others are forming synaptic connections). After the growth phase there is a learning process somewhat similar to supervised learning in artificial neural networks (ANN).</p>
+          <p class="lead">
+            Observation of nature always inspired development of scientifical thoughts. Existing methods of mathematical modeling and computational power provide a solid ground to address wide area of actual questions both in modern biology and computer science using models of biological neurons and connections (synapses). There are different subareas in neurobiology and machine learning which interact and make new areas with new question and issues. Biological Cellular Neural Network Modeling project is trying to make answers for some molecular, learning, behavioral and mathematical questions.
+          </p>
         </div>
         <div class="col-md-4">
           <h5>Twitter translation goes here</h5>
         </div>
       </div>
-      <div id="directions" class="section directions">
-        <h2>Directions</h2>
-        <p>At the moment, we have working evolving model that produces a neural network. It’s efficiency still could be better, but this is more a question of biological description and identifying valuable growing factors. As a next milestone we are planning to get a precision in classification tasks comparable to ANN. Another theme in the project is to growing neural network similar to one of the biological model organisms (popular nematode c.elegans). I am not really a biology guy, and if you have any questions you are welcome to contact Dmitry Bozhko (dmitry.bozhko@jetbrains.com), who is a head of our project.</p>
+
+      <div id="goals" class="section">
+        <h2 class="h3">Goals</h2>
+        <p>
+          The main goal of <abbr title="Biological Cellular Neural Network Modeling" class="initialism">BCNNM</abbr> project is to provide a simulation of evolutionary process of a neural tissue development in living organisms and molecular processes inside the cells in that tissue, which leads us to complex behavioral understanding. For each modeling organism it could be a whole connectome (map of neural connections within an organism's nervous system) and just a small part of real brain for another. Using such simulation will give us opportunity to pick up parameter-optimized models of biologically close neuronal networks which could be used in different applied and scientific solutions such as visual pattern recognition, recognition of sound waves and another kind of signals, clustering of big data, creating knowledge bases, data correlation and prediction, making decisions based on analyzing of knowledge base and analyzing other decisions, which were made by human (training mode). Analysis of such network models and comparing them with real biological connectomes would help us to find similarities in neural tissues in different organisms due to their functional purposes.
+        </p>
       </div>
+
+      <div id="description" class="section ">
+        <h2 class="h3"><abbr title="Biological Cellular Neural Network Modeling" class="initialism">BCNNM</abbr> includes several major aspects:</h2>
+        <ul>
+          <li>Main model which simulates network development: neurogenesis including cell division and proliferation, histogenesis and tissue development, synaptogenesis. After the growth phase there is a learning process somewhat similar to supervised learning in artificial neural networks (ANN). During this stage some connections are getting stronger and some weaker (synaptic and neuronal plasticity principles). Useless synapses eliminate due to biological pruning processes. Neurons which do not have any axonal and dendritic connections eliminate too. However network always has some reserves in "Stem cells pool" so network can slightly increase its neurons and synapses count.</li>
+          <li>Network evolution and selection. On this stage model ranges all individual networks in progeny and choose top N nets to recombine their genes (development and learning parameters). Range parameters are configurable and depend on specific tasks.</li>
+          <li>Statistical and graph analysis. First of all we have to analyse all results which model gives us from different individual networks. Our goal is to determine learning patterns and correlate them to average network structure and initial parameters for each class of tasks e.g. visual recognition, associative memory, decision making etc. Next goal is to compare network structure and its dynamical molecular processes with known biological systems/modeling organisms and to determine "biological power" of each network.</li>
+          <li>Development of selected known network of modeling organism. For now we try to model full development of C.Elegans network structurally using our simulation model.</li>
+        </ul>
+      </div>
+
+      <div id="model" class="section">
+        <h2 class="h3">Model</h2>
+        <p>Our model is dynamical, spatial and based on intracellular and extracellular interaction and processes. For universal and standard information unit to work on each model level we choose chemical signaling pathway. For any action in a cell preceded unique signaling pathway. Any of present pathways has its own duration in time and each pathway has its own "gene set". Each of this gene may present in any number of pathways and also has a duration. Duration of each action is a sum of all its genes, so change of duration of particular gene would affect several pathways and may change all behavior of simulated network.</p>
+
+        <p>To simplify all calculations with cells size and their spatial interactions (physics level of system description) we choose to modify model space to cube with integer lattice. All moving algorithms (cell movement, axonal growth, chemical signal spreading, etc) are based on this lattice and allowed shifts in it. We are starting from a single cell per individual and a set of biological rules and pathways that describe behavior of the intracellular and extracellular interaction and processes. During the simulation network evolves: new neural cells are formed, some of them are dying (apoptotic processes), others are forming synaptic connections. Each cell has its type and a set of signaling pathways. Depending on spatial chemical signaling and intracellular preset each cell has its own number of receptors of concrete type, can affect other cells’ current processes, reacts in different ways on different neurotransmitters.</p>
+
+        <p>Depending on our goal we can get just spatial (topological) information as a result, information about tissue composition, information about neuronal and synaptic plasticity (we could just simulate some spikes with parametrized frequency), <abbr title="Electroencephalography" class="initialism">EEG</abbr> information from each neuron at exact time, information about learning process.</p>
+
+        <p>Model learning process includes stimulation of specific sensor layer and getting spikes from specific cells for decision purposes. Because of dynamic and spatial principles we construct Arbiter which is responsible for detecting all kinds of spikes in network and signal strength of each particular neuron. Arbiter’s state tells all important information to model Learning System which decides when and how we should stimulate sensors next time. As a test task for our model learning we have choosen recognition of handwritten digits from <a href="http://yann.lecun.com/exdb/mnist/">MNIST</a> dataset. For now we are working on reinforcement learning with dopaminergic circuits.</p>
+
+        <p>To obtain more efficient network for solving a given class tasks we develop evolutionary algorithm which selects best networks due to basic parameters:</p>
+
+        <ul>
+          <li>Total learning error is the main filter parameter which is used to select networks with smallest value of it. More accurate networks get higher score and put on the top of generation list.</li>
+          <li>Speed of learning filter allows us to choose faster network between networks from top group with same total error with small delta. Networks which are faster would have higher priority so we are trying to reduce time on each next generation model.</li>
+          <li>Computational efficiency is the last main filter which allows us to select networks with lower physical memory amount. It depends on total cells count and its remoteness in each network, axons length, total synapses amount etc. Decreasing amount of physical memory usage we select more topologically efficient networks. Selecting by this filter we can increase amount of diversity of all individual networks in the next generation.</li>
+        </ul> 
+        <p>The main key of model evolution is to obtain such duration parameters for each gene which is a part of certain signaling pathways so each action caused by that pathways would give us more efficient network: there would be less neurons with less synapses, with better topology, fast expression of factors and neurotransmitters and with better plasticity. To choose stop criteria of evolutionary algorithm we decide always to put the best network from the previous generation to new progeny and compare results with newcome networks. If top 1 network configuration is not changing due to N generation, we think that we have reached maximum and stop simulation. If the total error of this network is still unacceptable, we make new "Pathways-to-Genes layout" and simulate again.</p>
+      </div>
+
+      <div id="core" class="section ">
+        <h2 class="h3">Core</h2>
+        <p>We use imitational modeling principle with shared modeling time and small discrete value of t for each modeling step. In general we use ordinary differential equations (ODE) to describe complex dynamical processes and link them to pathways. On each simulation step we have dependent and independent actions which occur in each cell inside simulation model. We define common functionality for each cell in separate logic unit and split calculations for particular t for each cell into separate agent that are calculating in parallel to other agents.</p>
+        <p>By using such approach we solve scalability issues when our network grows from hundred to ten thousands cells in it. Also such approach allows us to build fully distributed system in future and use more independent hardware for simulation.</p>
+      </div>
+
+      <div id="analysis" class="section ">
+        <h2 class="h3">Analysis</h2>
+        <p>Main analysis techniques currently are applying to the simulation results, more precisely to resulting neural networks on each stage of development and learning. Analysis of topological structure is closely related to the area of biology called ‘connectomics’ – analysis of neural network of living creatures. Analysis of neural net topology can highlight some of its properties as a whole as well as bring light to some individual neurons, synapses or their combinations.</p>
+        <p>It is trivial to distinguish <abbr title="Artificial neural network" class="initialism">ANN</abbr> from a biological one. Typical artificial network contains easily detectable clusters. Often it is designed to have layered structure. Contrary, biological network is a mess at the first sight. However, using graph theory tools it is possible to structure the network and label it with tags that are meaningful for a human.</p>
+        <p>We are trying to bend together connectomics and artificial networks. As an ultimate goal, we want to obtain a set of techniques that describes roles of neurons/clusters/communities. These techniques should be applicable to a decision making networks, both artificial and biological. We believe that results of our work will increase transparency of artificial networks, and will help biologists to analyse connectomes.</p>
+      </div>
+
+      <div id="further-work" class="section ">
+        <h2 class="h3">Further work</h2>
+        <p>At the moment, we are working on evolutionary algorithm that produces a serial set of generations of neural networks, on learning algorithms which allow them to solve specific tasks and select best configuration for this class of tasks. Currently we are focused on questions of biological description and identification of valuable signalling pathways. As a next milestone we are planning to increase precision in classification tasks comparable to what could be obtained using classic artificial neural nets. Another goal we want to achieve in near future is to grow neural network similar to one of the biological model organisms (popular nematode C.Elegans) using <abbr title="Biological Cellular Neural Network Modeling" class="initialism">BCNNM</abbr> model.</p>
+        <p>Long-term goals include:</p>
+        <ul>
+          <li>Map prepared network from our model to <abbr title="Artificial neural network" class="initialism">ANN</abbr>. This should reduce computational cost of the solution and bring it to the level of applied artificial neural networks.</li>
+        </ul>
+        <p>Base core principle of our modeling allows us to model another kind of tissue by only describing specific cells and their signaling pathways. This option may be interesting in modeling different sorts of histogenesis and especially in embryogenesis. Though for that purposes we should define modeling space more specifically: for example, by using double lattice instead of integer, defining cells size and their morphology, etc.</p>
+      </div>
+
       <div id="team" class="section team">
-        <h2>Team</h2>
+        <h2 class="h3">Team</h2>
 
         <div class="person">
           <img height="80" width="80" class="avatar img-circle" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1FtEh9PGVpQxzWZdI3OrEtNc51izMS0XEIMSumqMxcsa1I36t"/>
 
           <h3 class="h4">Dmitry Bozhko</h3>
-          <p>
-            Model, management and software
-          </p>
+          <p>Project head, single simulation model, learning, programming</p>
+          <a href="mailto:dvbozhko@gmail.com">dvbozhko@gmail.com</a>
         </div>
         <div class="person">
           <img height="80" width="80" class="avatar img-circle" src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQkwglNJBRqoaFODSHbGusAAfQZ25A_ceb5ZWPjs6S20mZuhX_3-Q"/>
 
           <h3 class="h4">Georgy Galumov</h3>
-          <p>
-            Software and astrophysics
-          </p>
+          <p>Infrastructure, evolutionary algorithm, configuration, programming</p>
+          <a href="mailto:georgyg2010@gmail.com">georgyg2010@gmail.com</a>
         </div>
         <div class="person">
           <img height="80" width="80" class="avatar img-circle" src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcT9nu7mokajHvhBcIDVn7YuFG7JdlhyVNZjBUSBvPOTz-vl-B3pBw"/>
 
           <h3 class="h4">Victoria Stelmakh</h3>
-          <p>
-            Biology
-          </p>
+          <p>Biology consultation, model learning, interpretation of analysis</p>
+          <a href="mailto:vastelmakh94@gmail.com">vastelmakh94@gmail.com</a>
         </div>
         <div class="person">
           <img height="80" width="80" class="avatar img-circle" src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSAHdR9m5Ah_Pk4wYixvGr6Ox0NVpSc7a8AWZVZ4hELaZffVGh1JA"/>
 
           <h3 class="h4">Alex Polovian</h3>
-          <p>
-            Mathematics and programming
-          </p>
+          <p>Mathematical analysis, visualization, connectome, programming</p>
+          <a href="mailto:a.polovjan@gmail.com">a.polovjan@gmail.com</a>
         </div>
+      </div>
 
-<!--         <ul class="list-unstyled">
-          <li>
-            <h3>Dmitry Bozhko</h3>
-          </li>
-          <li>
-            <h3>Georgy Galumov</h3>
-          </li>
-          <li>
-            <h3>Victoria Stelmakh</h3>
-          </li>
-          <li>
-            <h3>Alex Polovian</h3>
-            <p></p>
-          </li>
-        </ul>
- -->      </div>
       <div id="contacts" class="section contacts">
-        <h2>Contacts</h2>
+        <h2 class="h3">Contacts</h2>
         <div class="container">
           <ul class="list-unstyled">
             <li>AAAA</li>
