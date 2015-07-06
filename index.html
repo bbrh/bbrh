@@ -36,12 +36,12 @@
 
     <div data-spy="scroll" data-target="#menu" data-offset="0">
       <div id="intro" class="section row">
-        <div class="col-md-8">
-          <p class="lead">
+        <div class="col-sm-12 col-md-8 col-lg-6">
+          <p class="lead" >
             Observation of nature always inspired development of scientifical thoughts. Existing methods of mathematical modeling and computational power provide a solid ground to address wide area of actual questions both in modern biology and computer science using models of biological neurons and connections (synapses). There are different subareas in neurobiology and machine learning which interact and make new areas with new question and issues. Biological Cellular Neural Network Modeling project is trying to make answers for some molecular, learning, behavioral and mathematical questions.
           </p>
         </div>
-        <div class="col-md-4">
+        <div class="col-sm-12 col-md-4 col-lg-offset-2">
           <h5>Twitter translation goes here</h5>
         </div>
       </div>
@@ -63,16 +63,19 @@
         </ul>
       </div>
 
-      <div id="model" class="section">
-        <h2 class="h3">Model</h2>
+      <div id="model" class="section row">
+        <h2 class="h3 col-sm-12">Model</h2>
+        <div class="col-sm-12 col-md-6 col-lg-4">
         <p>Our model is dynamical, spatial and based on intracellular and extracellular interaction and processes. For universal and standard information unit to work on each model level we choose chemical signaling pathway. For any action in a cell preceded unique signaling pathway. Any of present pathways has its own duration in time and each pathway has its own "gene set". Each of this gene may present in any number of pathways and also has a duration. Duration of each action is a sum of all its genes, so change of duration of particular gene would affect several pathways and may change all behavior of simulated network.</p>
 
         <p>To simplify all calculations with cells size and their spatial interactions (physics level of system description) we choose to modify model space to cube with integer lattice. All moving algorithms (cell movement, axonal growth, chemical signal spreading, etc) are based on this lattice and allowed shifts in it. We are starting from a single cell per individual and a set of biological rules and pathways that describe behavior of the intracellular and extracellular interaction and processes. During the simulation network evolves: new neural cells are formed, some of them are dying (apoptotic processes), others are forming synaptic connections. Each cell has its type and a set of signaling pathways. Depending on spatial chemical signaling and intracellular preset each cell has its own number of receptors of concrete type, can affect other cells’ current processes, reacts in different ways on different neurotransmitters.</p>
 
         <p>Depending on our goal we can get just spatial (topological) information as a result, information about tissue composition, information about neuronal and synaptic plasticity (we could just simulate some spikes with parametrized frequency), <abbr title="Electroencephalography" class="initialism">EEG</abbr> information from each neuron at exact time, information about learning process.</p>
-
+        
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-4">
+        
         <p>Model learning process includes stimulation of specific sensor layer and getting spikes from specific cells for decision purposes. Because of dynamic and spatial principles we construct Arbiter which is responsible for detecting all kinds of spikes in network and signal strength of each particular neuron. Arbiter’s state tells all important information to model Learning System which decides when and how we should stimulate sensors next time. As a test task for our model learning we have choosen recognition of handwritten digits from <a href="http://yann.lecun.com/exdb/mnist/">MNIST</a> dataset. For now we are working on reinforcement learning with dopaminergic circuits.</p>
-
         <p>To obtain more efficient network for solving a given class tasks we develop evolutionary algorithm which selects best networks due to basic parameters:</p>
 
         <ul>
@@ -80,7 +83,12 @@
           <li>Speed of learning filter allows us to choose faster network between networks from top group with same total error with small delta. Networks which are faster would have higher priority so we are trying to reduce time on each next generation model.</li>
           <li>Computational efficiency is the last main filter which allows us to select networks with lower physical memory amount. It depends on total cells count and its remoteness in each network, axons length, total synapses amount etc. Decreasing amount of physical memory usage we select more topologically efficient networks. Selecting by this filter we can increase amount of diversity of all individual networks in the next generation.</li>
         </ul> 
+
+        </div>
+
+        <div class="col-sm-12 col-md-12 col-lg-4">
         <p>The main key of model evolution is to obtain such duration parameters for each gene which is a part of certain signaling pathways so each action caused by that pathways would give us more efficient network: there would be less neurons with less synapses, with better topology, fast expression of factors and neurotransmitters and with better plasticity. To choose stop criteria of evolutionary algorithm we decide always to put the best network from the previous generation to new progeny and compare results with newcome networks. If top 1 network configuration is not changing due to N generation, we think that we have reached maximum and stop simulation. If the total error of this network is still unacceptable, we make new "Pathways-to-Genes layout" and simulate again.</p>
+        </div>
       </div>
 
       <div id="core" class="section ">
